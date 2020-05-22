@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/widgets/raisedButtonWidget.dart';
+import 'package:whatsapp/widgets/textFieldWidget.dart';
 
 class Cadastro extends StatefulWidget {
   @override
@@ -30,61 +32,23 @@ class CadastroState extends State<Cadastro> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 8),
-                  child: TextField(
-                    autofocus: true,
-                    keyboardType: TextInputType.text,
-                    style: TextStyle(fontSize: 20),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "Nome",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        )),
-                  ),
+                  child: TextFieldWidget(
+                    autoFocus: true,
+                    filled: true,
+                    hintText: "Nome",
+                  ).textFieldCircle(),
                 ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 8),
-                  child: TextField(
-                    keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(fontSize: 20),
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                        filled: true,
-                        fillColor: Colors.white,
-                        hintText: "E-mail",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        )),
-                  ),
+                  child: TextFieldWidget(hintText: "E-mail").textFieldCircle(),
                 ),
-                TextField(
-                  keyboardType: TextInputType.visiblePassword,
-                  style: TextStyle(fontSize: 20),
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                      filled: true,
-                      fillColor: Colors.white,
-                      hintText: "Senha",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(32),
-                      )),
-                ),
+                TextFieldWidget(hintText: "Senha").textFieldCircle(),
                 Padding(
                   padding: EdgeInsets.only(top: 15),
-                  child: RaisedButton(
-                    child: Text(
-                      "Cadastrar",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                    color: Colors.green,
-                    padding: EdgeInsets.fromLTRB(32, 16, 32, 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
+                  child: RaisedButtonWidget(
+                    name: "Cadastrar",
                     onPressed: () {},
-                  ),
+                  ).raisedButtonCircle(),
                 )
               ],
             ),
