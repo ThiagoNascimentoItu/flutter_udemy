@@ -6,24 +6,27 @@ class TextFieldWidget {
   Color fillColor;
   bool filled;
   TextInputType textInputType;
-  TextEditingController textEditingController;
+  TextEditingController controller;
   VoidCallback onTap;
+  bool obscureText;
 
   TextFieldWidget({
-    // @required this.textEditingController,
+    this.controller,
     this.autoFocus = false,
     this.hintText = "",
     this.fillColor = Colors.white,
     this.filled = true,
     this.textInputType = TextInputType.text,   
-    this.onTap 
+    this.onTap,
+    this.obscureText = false
   });
 
   Widget textFieldCircle() {
     return TextField(
       autofocus: this.autoFocus,
       keyboardType: this.textInputType,
-      // controller: this.textEditingController,
+      controller: this.controller,
+      obscureText: this.obscureText,
       onTap: this.onTap,
       style: TextStyle(fontSize: 20),
       decoration: InputDecoration(
