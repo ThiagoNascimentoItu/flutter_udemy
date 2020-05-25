@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -30,6 +31,13 @@ class CadastroState extends State<Cadastro> {
       password: usuario.senha,
     )
         .then((firebaseUser) {
+      //Salvar dados do usuários
+      Firestore db = Firestore.instance;
+      db
+          .collection("usuarios")
+          .document(firebaseUser.user.uid)
+          .setData(usuario.toMap());
+
       Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);
       _limpaControllers();
     }).catchError((onErro) {
