@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/models/conversar.dart';
 
-class AbaConversas extends StatefulWidget {
+class Conversas extends StatefulWidget {
   @override
-  _AbaConversasState createState() => _AbaConversasState();
+  _ConversasState createState() => _ConversasState();
 }
 
-class _AbaConversasState extends State<AbaConversas> {
+class _ConversasState extends State<Conversas> {
   List<Conversa> listaConversas = [
     Conversa(
       "Ana",

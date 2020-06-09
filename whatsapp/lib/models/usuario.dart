@@ -2,6 +2,11 @@ class Usuario {
   String _nome;
   String _email;
   String _senha;
+  String _urlImagem;
+
+  String get urlImagem => _urlImagem;
+
+  set urlImagem(String value) => _urlImagem = value;
 
   String get nome => _nome;
 
@@ -17,7 +22,7 @@ class Usuario {
 
   Usuario();
   Map<String, dynamic> toMap() {
-    Map<String, dynamic> map = {"nome": this.nome, "email": this.email};
+    Map<String, dynamic> map = {"nome": this.nome, "email": this.email.trim()};
     return map;
   }
 }

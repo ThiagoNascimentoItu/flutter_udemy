@@ -25,8 +25,8 @@ class _LoginState extends State<Login> {
 
     auth
         .signInWithEmailAndPassword(
-      email: usuario.email,
-      password: usuario.senha,
+      email: usuario.email.trim(),
+      password: usuario.senha.trim(),
     )
         .then((firebaseUser) {
       Navigator.of(context).pushNamedAndRemoveUntil("/home", (route) => false);

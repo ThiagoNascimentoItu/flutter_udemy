@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'package:whatsapp/screens/abaContatos.dart';
-import 'package:whatsapp/screens/abaConversas.dart';
+import 'package:whatsapp/screens/home/component/widgets/tabBarViewWidget.dart';
+import 'package:whatsapp/screens/home/component/widgets/tabBarWidget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -12,29 +11,24 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   TabController _tabController;
   List<String> _itensMenu = ["Configuração", "Deslogar"];
-  String _emailUsuario = "";
-  Future _recuperaUsuarioLogado() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    FirebaseUser usuarioLogado = await auth.currentUser();
-
-    setState(() {
-      _emailUsuario = usuarioLogado.email;
-    });
-  }
+  // Future _recuperaUsuarioLogado() async {
+  // FirebaseAuth auth = FirebaseAuth.instance;
+  // FirebaseUser _usuarioLogado = await auth.currentUser();
+  // }
 
   @override
   void initState() {
     super.initState();
-    _recuperaUsuarioLogado();
     _tabController = TabController(length: 2, vsync: this);
   }
 
   _escolhaMenuItem(String itemEscolhido) {
     switch (itemEscolhido) {
       case "Configuração":
+        Navigator.of(context).pushNamed('/configuracoes');
         break;
       case "Deslogar":
-      _deslogarUsuario();
+        _deslogarUsuario();
         break;
       default:
     }
@@ -52,19 +46,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text('WhatsApp'),
-        bottom: TabBar(
-            indicatorWeight: 4,
-            labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            controller: _tabController,
-            indicatorColor: Colors.white,
-            tabs: <Widget>[
-              Tab(
-                text: "Conversas",
-              ),
-              Tab(
-                text: "Contatos",
-              ),
-            ]),
+        bottom: TabBarWidget(controller: _tabController).tabBarWidget(),
         actions: <Widget>[
           PopupMenuButton<String>(
               onSelected: _escolhaMenuItem,
@@ -78,10 +60,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               })
         ],
       ),
-      body: TabBarView(controller: _tabController, children: <Widget>[
-        AbaConversas(),
-        AbaContatos(),
-      ]),
+      body: TabBarViewWidget(controller: _tabController).tabBarView(),
     );
   }
 }
