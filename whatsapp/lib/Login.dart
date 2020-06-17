@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'Cadastro.dart';
-import 'Home.dart';
-import 'RouteGenerator.dart';
 import 'model/Usuario.dart';
 
 class Login extends StatefulWidget {

@@ -28,6 +28,8 @@ dependencies:
   firebase_storage: ^3.1.5 #armazenamento arquivos
   cloud_firestore: ^0.13.4+2 #banco de dados
   image_picker: ^0.6.0+10 #selecionar imagens
+  google_sign_in: ^4.5.1
+  flutter_facebook_login: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,8 @@ flutter:
    - imagens/logo.png
    - imagens/usuario.png
    - imagens/bg.png
+   - imagens/google_logo.png
+   - imagens/f_logo_RGB-Blue_72.png 
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
